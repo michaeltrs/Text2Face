@@ -24,12 +24,9 @@ pip install -r requirements.txt
 ## Checkpoints
 You can download the pretrained LoRa weights for the diffusion model and text encoder using our provided Python script `download.py`
 
-```python
-from huggingface_hub import hf_hub_download
-
-hf_hub_download(repo_id="michaeltrs/text2face", filename="checkpoints/lora30k/pytorch_lora_weights.safetensors", local_dir="./test")
+```bash
+python download.py
 ```
-
 ## Inference
 Generate images using the `generate.py` script, which loads the SD2.1 foundation model from Hugging Face and applies the LoRa weights. 
 Generation is driven by defining a prompt and optionally a negative prompt.

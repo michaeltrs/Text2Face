@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     model = Model()
 
-    prompt = 'A sad 55 year old male with blond hair and a goatee. Visible teeth.'
+    prompt = 'A happy 55 year old male with blond hair and a goatee smiles with visible teeth.'
     negprompt = ''
 
     image = model.generate(prompt, negprompt=negprompt, steps=50, seed=42)
