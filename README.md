@@ -7,9 +7,9 @@ for generating face images. The package includes both training and inference cap
 and the synthetic annotations used for finetuning.
 
 ## Features
-- **Finetuning Script:** `finetune.py` applies LoRa adjustments to both the UNet denoiser and the text encoder of Stable Diffusion.
-- **Inference Script:** `generate.py` Ready-to-use script for generating images using the pretrained model.
 - **Pretrained Model:** `download.py` downloads our pretrained model from Hugging Face.
+- **Inference Script:** `generate.py` Ready-to-use script for generating images using the pretrained model.
+- **Finetuning Script:** `finetune.py` applies LoRa adjustments to both the UNet denoiser and the text encoder of Stable Diffusion.
 
 ## Environment Setup
 Set up a conda environment to run the model using the following commands:
@@ -17,7 +17,7 @@ Set up a conda environment to run the model using the following commands:
 conda create -n text2face
 conda activate text2face
 
-# Install requirements
+## Install requirements
 pip install -r requirements.txt
 ```
 
@@ -30,6 +30,11 @@ python download.py
 ## Inference
 Generate images using the `generate.py` script, which loads the SD2.1 foundation model from Hugging Face and applies the LoRa weights. 
 Generation is driven by defining a prompt and optionally a negative prompt.
+
+## Datasets
+The provided checkpoint was finetuned with [FFHQ](https://github.com/NVlabs/ffhq-dataset) and [easyportrait](https://github.com/hukenovs/easyportrait) 
+using synthetic text captions for both datasets. 
+Details on the dataset format and preparation will be available soon. 
 
 ## Finetuning
 Use `finetune.py` to finetune a stable diffusion model using LoRAs for the UNet denoiser and the text encoder. 
@@ -64,11 +69,6 @@ accelerate launch  finetune_lora.py --pretrained_model_name_or_path=$MODEL_NAME 
 --resume_from_checkpoint "latest" \
 --validation_prompts "A young Latina woman, around 27 years old, with long hair and pale skin, expressing a mix of happiness and neutral emotions. She has fully open eyes and arched eyebrows." "The person is a 44-year-old Asian male with gray hair and a receding hairline. He has a big nose, closed mouth and is feeling a mix of anger and sadness." "A Latino Hispanic male, 22 years old, with straight hair, an oval face, and eyes fully open. His emotion is sad and partly neutral." "A white male, 28 years old, with a neutral emotion, sideburns, pale skin, little hair, an attractive appearance, a 5 o'clock shadow, and pointy nose." "A young, black, female individual with an oval face and big eyes, with a happy and partly surprised expression."
 ```
-
-## Datasets
-The provided checkpoint was finetuned with [FFHQ](https://github.com/NVlabs/ffhq-dataset) and [easyportrait](https://github.com/hukenovs/easyportrait) 
-using synthetic text captions for both datasets. 
-Details on the dataset format and preparation will be available soon. 
 
 ## Limitations
 
