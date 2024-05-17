@@ -2,9 +2,12 @@
 ![Python version](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+
 This repository provides the code for a LoRa-finetuned version of the Stable Diffusion 2.1 model specifically optimized 
 for generating face images. The package includes both training and inference capabilities, along with a pretrained model 
-and the synthetic annotations used for finetuning.
+and the synthetic annotations used for finetuning. Some examples comparing our model (right) with SD2.1 base model (left) are presented below.
+
+![Alt text](examples.png)
 
 ## Features
 - **Pretrained Model:** `download.py` downloads our pretrained model from Hugging Face.
@@ -34,7 +37,14 @@ Generation is driven by defining a prompt and optionally a negative prompt.
 ## Datasets
 The provided checkpoint was finetuned with [FFHQ](https://github.com/NVlabs/ffhq-dataset) and [easyportrait](https://github.com/hukenovs/easyportrait) 
 using synthetic text captions for both datasets. 
-Details on the dataset format and preparation will be available soon. 
+Synthetic captions for these datasets and a subset of [LAION-Face](https://huggingface.co/datasets/FacePerceiver/laion-face), which includes high resolution face crops, can be found in the links below.
+
+| Dataset       | # Images | captions |
+|:--------------|------:|---------:|
+| Easy Portrait         |  39k |       [google drive](https://drive.google.com/file/d/1GAYPxtn9a6M8syj_rmiQUU9qFWYJjKX0/view?usp=drive_link) |
+| FFHQ        |  70k |       [google drive](https://drive.google.com/file/d/12UlvshHY42S1hA3pj6uYDIyx5HbAzT-G/view?usp=drive_link) |
+| LAION-Face        |  156k |       [google drive](https://drive.google.com/file/d/1qNw9WgV_QaxZ-OKtNYpGNm4vmBNGaNsG/view?usp=drive_link) |
+
 
 ## Finetuning
 Use `finetune.py` to finetune a stable diffusion model using LoRAs for the UNet denoiser and the text encoder. 
